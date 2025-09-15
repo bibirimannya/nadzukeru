@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <section class="input-section">
+        <div class="input-wrapper">
+            <div class="service-intro">
+                <h2 class="service-title">姓名診断サービス</h2>
+                <ul class="service-features">
+                    <li>名前の運勢、総画数、調べる</li>
+                    <li>子どもの命名に</li>
+                    <li>いい名に出会える</li>
+                </ul>
+            </div>
+            
+            <div class="input-card">
+                <h3 class="section-title">姓名判断</h3>
+                <p class="section-description">苗字と名前を入力して、五格による運勢診断を行います</p>
+                
+                <form id="seimei-form" class="input-form">
+                    <div class="form-group">
+                        <label for="surname" class="form-label">苗字</label>
+                        <input 
+                            type="text" 
+                            id="surname" 
+                            name="surname" 
+                            class="form-input"
+                            placeholder="例：田中"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="given_name" class="form-label">名前</label>
+                        <input 
+                            type="text" 
+                            id="given_name" 
+                            name="given_name" 
+                            class="form-input"
+                            placeholder="例：太郎"
+                            required
+                        >
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="calculate-btn">
+                        <span class="btn-text">運勢を診断する</span>
+                        <span class="loading" style="display: none;">計算中...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

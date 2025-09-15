@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="ad-section">
+        <h2>診断結果を表示しています...</h2>
+        <div class="ad-content">
+            <!-- 広告エリア -->
+            <div class="advertisement-area">
+                <h3>スポンサー広告</h3>
+                <div class="ad-placeholder">
+                    <!-- ここに実際の広告を配置 -->
+                    <p>【広告】あなたにおすすめの商品</p>
+                    <div style="width: 300px; height: 200px; background-color: #e0e0e0; margin: 20px auto; display: flex; align-items: center; justify-content: center;">
+                        広告エリア
+                    </div>
+                </div>
+            </div>
+            
+            <!-- カウントダウンタイマー -->
+            <div class="timer-section">
+                <p>診断結果まで残り: <span id="countdown">5</span>秒</p>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let countdown = 5;
+const countdownElement = document.getElementById('countdown');
+const progressElement = document.getElementById('progress');
+
+const timer = setInterval(function() {
+    countdown--;
+    countdownElement.textContent = countdown;
+    
+    // プログレスバーの更新
+    const progress = ((5 - countdown) / 5) * 100;
+    progressElement.style.width = progress + '%';
+    
+    if (countdown <= 0) {
+        clearInterval(timer);
+        window.location.href = '/result';
+    }
+}, 1000);
+</script>
+
+<style>
+.ad-section {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.advertisement-area {
+    background-color: #F9F9F9;
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 8px;
+}
+
+.ad-placeholder {
+    margin: 20px 0;
+}
+
+.timer-section {
+    margin-top: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #F7433D;
+    width: 0%;
+    transition: width 1s ease;
+}
+</style>
+{% endblock %}
